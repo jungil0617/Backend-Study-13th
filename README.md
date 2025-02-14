@@ -1,1 +1,1 @@
-# 13th-Backend-Study
+# Backend-Study-13th
