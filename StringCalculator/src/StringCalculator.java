@@ -1,8 +1,7 @@
-import java.util.Scanner;
-
 public class StringCalculator {
     public static void main(String[] args) {
         InputHandler inputHandler = new InputHandler();
+        OutputHandler outputHandler = new OutputHandler();
         StringParser stringParser = new StringParser();
         Calculator calculator = new Calculator();
 
@@ -13,7 +12,9 @@ public class StringCalculator {
         int[] numbers = stringParser.getNumbers();
         String sign = stringParser.getSign();
 
-        calculator.calculator(numbers, sign);
+        double result = calculator.calculate(numbers, sign);
+
+        outputHandler.printResult(numbers, sign, result);
 
         inputHandler.close();
     }
