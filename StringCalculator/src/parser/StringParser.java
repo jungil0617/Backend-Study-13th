@@ -1,3 +1,5 @@
+package parser;
+
 public class StringParser {
     private String number;
     private String sign;

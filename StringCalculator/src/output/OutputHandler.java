@@ -1,3 +1,5 @@
+package output;
+
 public class OutputHandler {
 
     public void printResult(int[] numbers, String sign, double result) {
