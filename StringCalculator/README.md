@@ -45,7 +45,7 @@ src
 │   └── OutputHandler.java
 ├── parser
 │   └── StringParser.java
-└── vaildation
+└── validation
     └── ExpressionValidator.java
 ~~~
 
