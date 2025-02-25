@@ -9,21 +9,45 @@
 + 소숫점의 경우 0.1, 0.2 와 같이 소숫점 첫째짜리까지 표시
 + 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException을 발생 시킨다.
 
-## 프로그래밍 요구사항
-+ 각 메소드는 하나의 일만 진행한다
-+ 입력 값이 빈 문자열이거나, null인경우 IllegalArgumentException을 발생하고, 어떤 예외인지 알 수 있도록 에러 메시지 포함
-+ 사칙연산 기호가 아닌경우 IllegalArgumentException을 발생하고, 에러 메시지 포함
-+ 그 외 다양한 예외 케이스에 대해서는 본인이 생각해서 구현진행
-+ 각 메소드의 depth는 2 depth 까지만 허용
 
-## 입력 예시
+## 입력 및 출력 예시
+~~~
 1. 1:2,3:4 +
 2. 6:10,2:3 *
 3. 7,2:3 -
 4. 4:2,5 /
+~~~
 
-## 출력 예시
+~~~
 1. 1 + 2 + 3 + 4 = 10
 2. 6 * 10 * 2 * 3 = 360
 3. 7 - 2 - 3 = 2
 4. 4 / 2 / 5 = 0.4
+~~~
+
+## 구현 로직
+1. 사용자 입력 기능
+2. 입력값 검증 및 예외 처리
+3. 문자열에서 구분자와 연산자를 기준으로 파싱
+4. 수식과 결과 값을 저장
+5. 결과 출력
+
+## 클래스 구조
+~~~
+src
+├── Main.java
+├── calculator
+│   └── Calculator.java
+├── error
+├── input
+│   └── InputHandler.java
+├── output
+│   └── OutputHandler.java
+├── parser
+│   └── StringParser.java
+└── vaildation
+    └── ExpressionValidator.java
+~~~
+
+
+## 예외 처리 방식
