@@ -52,7 +52,8 @@ src
     └── Validator.java
 ~~~
 
-## 예외 처리 방식
-1. 입력값이 null이거나 빈 문자열 일때.
-2. 잘못된 연산자를 입력했을때.
-3. 0으로 나눌 수 없을 때
+## 예외 처리
+1. 입력값이 null이거나 빈 문자열 일 때 IllegalArgumentException을 발생.
+2. 숫자가 아닌 문자를 입력했을때 IllegalArgumentException을 발생.
+3. 잘못된 연산자를 입력했을때 IllegalArgumentException을 발생.
+4. 0으로 나눌 수 없을 때 ArithmeticException을 발생.

@@ -1,5 +1,7 @@
 package parser;
 
+import error.ErrorMessage;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -11,8 +13,12 @@ public class StringParser {
     }
 
     public List<Double> getNumberList(String input) {
-        return Arrays.stream(input.split(Separator.getRegex()))
-                .map(Double::parseDouble)
-                .collect(Collectors.toList());
+        try {
+            return Arrays.stream(input.split(Separator.getRegex()))
+                    .map(Double::parseDouble)
+                    .collect(Collectors.toList());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_NUMBER_FORMAT.getMessage());
+        }
     }
 }
