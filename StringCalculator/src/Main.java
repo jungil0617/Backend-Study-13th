@@ -20,7 +20,5 @@ public class Main {
         double result = calculator.calculate(numbers, sign);
 
         outputHandler.printResult(numbers, sign, result);
-
-        inputHandler.close();
     }
 }
