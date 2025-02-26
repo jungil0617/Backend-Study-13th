@@ -1,18 +1,25 @@
 package output;
 
+import calculator.Operator;
+import java.util.List;
+
 public class OutputHandler {
 
-    public void printResult(int[] numbers, String sign, double result) {
-        System.out.print(numbers[0]);
+    public static void printResult(List<Double> numbers, Operator operator, double result) {
+        System.out.print(formatNumber(numbers.get(0)));
 
-        for (int i = 1; i < numbers.length; i++) {
-            System.out.print(" " + sign + " " + numbers[i]);
+        for (int i = 1; i < numbers.size(); i++) {
+            System.out.print(" " + operator.getSymbol() + " " + formatNumber(numbers.get(i)));
         }
 
-        if (sign.equals("/")) {
-            System.out.println(" = " + String.format("%.1f", result));
-        } else {
-            System.out.println(" = " + (int) result);
-        }
+        String formattedResult = (operator == Operator.DIVIDE)
+                ? String.format(" = %.1f", result)
+                : String.format(" = %d", (int) result);
+
+        System.out.println(formattedResult);
+    }
+
+    private static String formatNumber(Double number) {
+        return (number % 1 == 0) ? String.format("%d", number.longValue()) : String.format("%.1f", number);
     }
 }

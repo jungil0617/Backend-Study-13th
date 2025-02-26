@@ -1,24 +1,28 @@
 import calculator.Calculator;
+import calculator.Operator;
 import input.InputHandler;
 import output.OutputHandler;
 import parser.StringParser;
 
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
         InputHandler inputHandler = new InputHandler();
-        OutputHandler outputHandler = new OutputHandler();
         StringParser stringParser = new StringParser();
-        Calculator calculator = new Calculator();
+
+        final int OPERAND_INDEX = 0;
+        final int OPERATOR_INDEX = 1;
 
         String input = inputHandler.getInput();
+        String[] parsedExpression = stringParser.splitExpression(input);
 
-        stringParser.parse(input);
+        Operator operator = Operator.getOperator(parsedExpression[OPERATOR_INDEX]);
 
-        int[] numbers = stringParser.getNumbers();
-        String sign = stringParser.getSign();
+        List<Double> operands = stringParser.getNumberList(parsedExpression[OPERAND_INDEX]);
 
-        double result = calculator.calculate(numbers, sign);
+        double result = Calculator.calculate(operands, operator);
 
-        outputHandler.printResult(numbers, sign, result);
+        OutputHandler.printResult(operands, operator, result);
     }
 }
