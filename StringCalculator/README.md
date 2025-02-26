@@ -37,17 +37,22 @@
 src
 ├── Main.java
 ├── calculator
-│   └── Calculator.java
+│   ├── Calculator.java
+│   └── Operator.java
 ├── error
+│   └── ErrorMessage.java
 ├── input
 │   └── InputHandler.java
 ├── output
 │   └── OutputHandler.java
 ├── parser
+│   ├── Separator.java
 │   └── StringParser.java
 └── validation
-    └── ExpressionValidator.java
+    └── Validator.java
 ~~~
 
-
 ## 예외 처리 방식
+1. 입력값이 null이거나 빈 문자열 일때.
+2. 잘못된 연산자를 입력했을때.
+3. 0으로 나눌 수 없을 때
