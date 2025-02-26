@@ -1,38 +1,27 @@
 package calculator;
 
+import validation.Validator;
+
+import java.util.List;
+
 public class Calculator {
 
-    public double calculate(int[] numbers, String sign) {
-        if (numbers == null || numbers.length == 0) {
-            throw new IllegalArgumentException("계산할 숫자가 없습니다.");
-        }
+    public static double calculate(List<Double> numbers, Operator operator) {
+        double result = numbers.getFirst();
 
-        if (!sign.matches("[+\\-*/]")) {
-            throw new IllegalArgumentException("잘못된 연산자입니다: " + sign);
-        }
-
-        double result = numbers[0];
-
-        for(int i = 1; i < numbers.length; i++ ) {
-            switch (sign) {
-                case "+":
-                    result += numbers[i];
-                    break;
-                case "-":
-                    result -= numbers[i];
-                    break;
-                case "*":
-                    result *= numbers[i];
-                    break;
-                case "/":
-                    if (numbers[i] == 0) {
-                        throw new ArithmeticException("0으로 나눌 수 없습니다.");
+        for (int i = 1; i < numbers.size(); i++) {
+            switch (operator) {
+                case ADD -> result += numbers.get(i);
+                case SUBTRACT -> result -= numbers.get(i);
+                case MULTIPLY -> result *= numbers.get(i);
+                case DIVIDE -> {
+                    if (numbers.get(i) == 0) {
+                        Validator.validateDivisionByZero(numbers.get(i));
                     }
-                    result /= numbers[i];
-                    break;
+                    result /= numbers.get(i);
+                }
             }
         }
-
         return result;
     }
 }
