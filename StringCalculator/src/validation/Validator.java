@@ -21,4 +21,9 @@ public class Validator {
         }
     }
 
+    public static void validateDivisionByZero(double number) {
+        if (number == 0) {
+            throw new ArithmeticException(ErrorMessage.DIVIDE_BY_ZERO.getMessage());
+        }
+    }
 }
